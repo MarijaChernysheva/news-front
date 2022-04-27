@@ -1,0 +1,3 @@
+export const NEWS_REQUESTED = 'NEWS_REQUESTED';
+export const NEWS_RECEIVED = 'NEWS_RECEIVED';
+export const NEWS_FAILED = 'NEWS_FAILED';
