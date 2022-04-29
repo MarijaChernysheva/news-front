@@ -9,6 +9,7 @@ export const gotNews = (payload) => ({
   payload,
 });
 
-export const getRejected = () => ({
+export const getRejected = (error) => ({
   type: actionTypes.NEWS_FAILED,
+  error,
 });

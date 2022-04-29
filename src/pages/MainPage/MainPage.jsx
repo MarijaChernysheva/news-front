@@ -19,14 +19,12 @@ function Posts() {
     error,
   } = useSelector((state) => state.news);
 
-  console.table(news);
-
   if (isLoading) {
     return <Spinner />;
   }
 
   if (error) {
-    return <Alert severity="error" text="error" />;
+    return <Alert severity="error" text={error} />;
   }
 
   return (
