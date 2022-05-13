@@ -34,8 +34,13 @@ function MediaCard({ title, text }) {
 }
 
 MediaCard.propTypes = {
-  title: string.isRequired,
-  text: string.isRequired,
+  title: string,
+  text: string,
+};
+
+MediaCard.defaultProps = {
+  title: '',
+  text: '',
 };
 
 export default MediaCard;

@@ -1,0 +1,7 @@
+.logoutContent {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  padding-right: 15px;
+
+}

@@ -1,3 +1,16 @@
 export const NEWS_REQUESTED = 'NEWS_REQUESTED';
 export const NEWS_RECEIVED = 'NEWS_RECEIVED';
 export const NEWS_FAILED = 'NEWS_FAILED';
+
+export const TOGGLE_MODAL = 'TOGGLE_MODAL';
+export const CHANGE_MODAL_TYPE = 'CHANGE_MODAL_TYPE';
+
+export const AUTH_REQUESTED = 'AUTH_REQUESTED';
+export const AUTH_RECEIVED = 'AUTH_RECEIVED';
+export const AUTH_FAILED = 'AUTH_FAILED';
+
+export const LOGIN_REQUESTED = 'LOGIN_REQUESTED';
+export const LOGIN_RECEIVED = 'LOGIN_RECEIVED';
+export const LOGIN_FAILED = 'LOGIN_FAILED';
+
+export const LOGOUT = 'LOGOUT';
