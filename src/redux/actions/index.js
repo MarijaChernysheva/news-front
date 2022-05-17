@@ -13,3 +13,47 @@ export const getRejected = (error) => ({
   type: actionTypes.NEWS_FAILED,
   error,
 });
+
+export const toggleModal = (payload) => ({
+  type: actionTypes.TOGGLE_MODAL,
+  payload,
+});
+
+export const changeModalType = (payload) => ({
+  type: actionTypes.CHANGE_MODAL_TYPE,
+  payload,
+});
+
+export const sendAuth = (payload) => ({
+  type: actionTypes.AUTH_REQUESTED,
+  payload,
+});
+
+export const gotAuth = (payload) => ({
+  type: actionTypes.AUTH_RECEIVED,
+  payload,
+});
+
+export const rejectedAuth = (error) => ({
+  type: actionTypes.AUTH_FAILED,
+  error,
+});
+
+export const sendLogin = (payload) => ({
+  type: actionTypes.LOGIN_REQUESTED,
+  payload,
+});
+
+export const gotLogin = (payload) => ({
+  type: actionTypes.LOGIN_RECEIVED,
+  payload,
+});
+
+export const rejectedLogin = (error) => ({
+  type: actionTypes.LOGIN_FAILED,
+  error,
+});
+
+export const logoutClose = () => ({
+  type: actionTypes.LOGOUT,
+});
