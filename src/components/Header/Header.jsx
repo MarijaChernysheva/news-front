@@ -1,18 +1,18 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import Authorization from '../Authorization/Authorization';
+import AuthButtonGroup from '../AuthButtonGroup/AuthButtonGroup';
 import Logout from '../Logout/Logout';
 
 import './Header.css';
 
 function Header() {
-  const userIsLogin = useSelector((state) => state.auth.userIsLogin);
+  const isUserLogin = useSelector((state) => state.auth.isUserLogin);
 
   return (
     <div className="headerContent">
       <p>All news</p>
-      {userIsLogin ? <Logout /> : <Authorization />}
+      {isUserLogin ? <Logout /> : <AuthButtonGroup />}
     </div>
   );
 }

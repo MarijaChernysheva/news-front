@@ -19,7 +19,7 @@ export const toggleModal = (payload) => ({
   payload,
 });
 
-export const changeModal = (payload) => ({
+export const changeModalType = (payload) => ({
   type: actionTypes.CHANGE_MODAL_TYPE,
   payload,
 });

@@ -21,23 +21,22 @@ const style = {
 
 function AuthModal() {
   const dispatch = useDispatch();
-  const modalIsOpen = useSelector((state) => state.auth.modalIsOpen);
+  const isModalOpen = useSelector((state) => state.auth.isModalOpen);
 
   const handleClose = () => dispatch(toggleModal(false));
 
   return (
-    <div>
-      <Modal
-        open={modalIsOpen}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <AuthForm />
-        </Box>
-      </Modal>
-    </div>
+    <Modal
+      open={isModalOpen}
+      onClose={handleClose}
+      aria-labelledby="modal-modal-title"
+      aria-describedby="modal-modal-description"
+    >
+      <Box sx={style}>
+        <AuthForm />
+      </Box>
+    </Modal>
+
   );
 }
 

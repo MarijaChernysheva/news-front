@@ -38,7 +38,7 @@ function AuthForm() {
   };
 
   return (
-    <div>
+    <>
       <h1>{isSignup ? 'Sign Up' : 'Log In'}</h1>
       {errorText && <p style={{ color: 'red' }}>{errorText}</p>}
       <Formik
@@ -78,7 +78,7 @@ function AuthForm() {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-    </div>
+    </>
   );
 }
 

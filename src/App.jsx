@@ -10,7 +10,7 @@ import AuthModal from './components/AuthModal/AuthModal';
 import './App.css';
 
 function App() {
-  const modalIsOpen = useSelector((state) => state.auth.modalIsOpen);
+  const isModalOpen = useSelector((state) => state.auth.isModalOpen);
 
   return (
     <BrowserRouter>
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/userPage" element={<UserPage />} />
       </Routes>
-      {modalIsOpen && <AuthModal />}
+      {isModalOpen && <AuthModal />}
     </BrowserRouter>
   );
 }

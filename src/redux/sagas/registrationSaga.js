@@ -10,13 +10,10 @@ import api from '../../api/api';
 function* registrationSaga({ payload }) {
   try {
     const { data } = yield api.post('/auth/signup', payload);
-    if (data.error) {
-      throw new Error(data.error);
-    }
     yield put(gotAuth(data));
     yield put(sendLogin(payload));
-  } catch (err) {
-    yield put(rejectedAuth(err.message));
+  } catch ({ response }) {
+    yield put(rejectedAuth(response.data.message));
   }
 }
 
