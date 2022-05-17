@@ -10,15 +10,12 @@ import api from '../../api/api';
 function* loginSaga({ payload }) {
   try {
     const { data } = yield api.post('/auth/login', payload);
-    if (data.error) {
-      throw new Error(data.error);
-    }
     if (data.token) {
       localStorage.setItem('token', data.token);
     }
     yield put(gotLogin(data));
-  } catch (err) {
-    yield put(rejectedLogin(err.message));
+  } catch ({ response }) {
+    yield put(rejectedLogin(response.data.message));
   }
 }
 
