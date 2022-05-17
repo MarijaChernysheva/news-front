@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useSelector, useDispatch } from 'react-redux';
 import * as Yup from 'yup';
+
 import { sendAuth, sendLogin } from '../../redux/actions';
 
 const SignupSchema = Yup.object().shape({
@@ -15,7 +16,7 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email').required('Required'),
 });
 
-function Basic() {
+function AuthForm() {
   const dispatch = useDispatch();
   const modalType = useSelector((state) => state.auth.modalType);
   const error = useSelector((state) => state.auth.error);
@@ -50,13 +51,23 @@ function Basic() {
         onSubmit={handleSubmit}
       >
         <Form>
-          {/* <label htmlFor="login">Login</label> */}
-          {isSignup && <Field id="login" name="login" placeholder="login" onKeyUp={onKeyUp} />}
 
-          {/* <label htmlFor="password">Password</label> */}
-          <Field id="password" name="password" placeholder="password" onKeyUp={onKeyUp} />
+          {isSignup && (
+          <Field
+            id="login"
+            name="login"
+            placeholder="login"
+            onKeyUp={onKeyUp}
+          />
+          )}
 
-          {/* <label htmlFor="email">Email</label> */}
+          <Field
+            id="password"
+            name="password"
+            placeholder="password"
+            onKeyUp={onKeyUp}
+          />
+
           <Field
             onKeyUp={onKeyUp}
             id="email"
@@ -71,4 +82,4 @@ function Basic() {
   );
 }
 
-export default Basic;
+export default AuthForm;

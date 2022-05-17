@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import MainPage from './pages/MainPage/MainPage';
 import UserPage from './pages/UserPage/UserPage';
 import Header from './components/Header/Header';
-import Modal from './components/Modal/Modal';
+import AuthModal from './components/AuthModal/AuthModal';
 
 import './App.css';
 
@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<MainPage />} />
         <Route path="/userPage" element={<UserPage />} />
       </Routes>
-      {modalIsOpen && <Modal />}
+      {modalIsOpen && <AuthModal />}
     </BrowserRouter>
   );
 }

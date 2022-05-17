@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-import Basic from '../Formic/Formic';
+import AuthForm from '../AuthForm/AuthForm';
 import { toggleModal } from '../../redux/actions';
 
 const style = {
@@ -19,7 +19,7 @@ const style = {
   p: 4,
 };
 
-function BasicModal() {
+function AuthModal() {
   const dispatch = useDispatch();
   const modalIsOpen = useSelector((state) => state.auth.modalIsOpen);
 
@@ -34,11 +34,11 @@ function BasicModal() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Basic />
+          <AuthForm />
         </Box>
       </Modal>
     </div>
   );
 }
 
-export default BasicModal;
+export default AuthModal;

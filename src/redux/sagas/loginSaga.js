@@ -7,7 +7,7 @@ import { gotLogin, rejectedLogin } from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
 
-function* getLoginSaga({ payload }) {
+function* loginSaga({ payload }) {
   try {
     const { data } = yield api.post('/auth/login', payload);
     if (data.error) {
@@ -23,5 +23,5 @@ function* getLoginSaga({ payload }) {
 }
 
 export default function* watcherSaga() {
-  yield takeEvery(actionTypes.LOGIN_REQUESTED, getLoginSaga);
+  yield takeEvery(actionTypes.LOGIN_REQUESTED, loginSaga);
 }

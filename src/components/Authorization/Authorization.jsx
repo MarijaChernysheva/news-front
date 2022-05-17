@@ -1,13 +1,13 @@
 import React from 'react';
 
-import BasicButtonGroup from '../Button/Button';
+import AuthButtonGroup from '../AuthButtonGroup/AuthButtonGroup';
 
 import './Authorization.css';
 
 function Authorization() {
   return (
     <div className="authorizationContent">
-      <BasicButtonGroup />
+      <AuthButtonGroup />
     </div>
   );
 }

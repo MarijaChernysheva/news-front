@@ -7,7 +7,7 @@ import { gotAuth, rejectedAuth, sendLogin } from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
 
-function* getAuthSaga({ payload }) {
+function* registrationSaga({ payload }) {
   try {
     const { data } = yield api.post('/auth/signup', payload);
     if (data.error) {
@@ -21,5 +21,5 @@ function* getAuthSaga({ payload }) {
 }
 
 export default function* watcherSaga() {
-  yield takeEvery(actionTypes.AUTH_REQUESTED, getAuthSaga);
+  yield takeEvery(actionTypes.AUTH_REQUESTED, registrationSaga);
 }

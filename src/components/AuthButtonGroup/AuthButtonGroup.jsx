@@ -6,7 +6,7 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import { changeModal, toggleModal } from '../../redux/actions';
 
-function BasicButtonGroup() {
+function AuthButtonGroup() {
   const dispatch = useDispatch();
 
   const handlerClick = (type) => {
@@ -22,4 +22,4 @@ function BasicButtonGroup() {
   );
 }
 
-export default BasicButtonGroup;
+export default AuthButtonGroup;
