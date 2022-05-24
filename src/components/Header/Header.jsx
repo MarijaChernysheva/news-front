@@ -8,15 +8,14 @@ import Logout from '../Logout/Logout';
 import './Header.css';
 
 function Header() {
-  const isUserLogin = useSelector((state) => state.auth.isUserLogin);
+  const isLoggedId = useSelector((state) => state.auth.isUserLogin);
   const navigate = useNavigate();
 
   return (
     <div className="headerContent">
       <button type="button" className="buttonMainPage" onClick={() => navigate('/')}>All news</button>
-      {isUserLogin ? <Logout /> : <AuthButtonGroup />}
+      {isLoggedId ? <Logout /> : <AuthButtonGroup />}
     </div>
   );
 }
-
 export default Header;

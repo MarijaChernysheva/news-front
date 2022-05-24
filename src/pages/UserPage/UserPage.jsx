@@ -8,17 +8,17 @@ import Alert from '../../components/Alert/Alert';
 import UserData from '../../components/UserData/UserData';
 
 import './UserPage.css';
-import { getUserNews, isAuthorPageOpen } from '../../redux/actions';
+import { getUserNews, openAuthorPage } from '../../redux/actions';
 
-function PostsUserNews() {
+function UserPosts() {
   const dispatch = useDispatch();
   const params = useParams();
 
-  const isMyPage = params.id === 'my';
+  const isMyPage = params.id === 'profile';
 
   useEffect(() => {
     const currentAction = isMyPage
-      ? isAuthorPageOpen()
+      ? openAuthorPage()
       : getUserNews(params.id);
     dispatch(currentAction);
   }, [dispatch, params]);
@@ -52,4 +52,4 @@ function PostsUserNews() {
   );
 }
 
-export default PostsUserNews;
+export default UserPosts;

@@ -73,12 +73,7 @@ export const getUserNewsRejected = (error) => ({
   error,
 });
 
-export const isUserPageOpen = (payload) => ({
-  type: actionTypes.USER_NEWS_FAILED,
-  payload,
-});
-
-export const isAuthorPageOpen = (payload) => ({
+export const openAuthorPage = (payload) => ({
   type: actionTypes.AUTHOR_NEWS_REQUESTED,
   payload,
 });

@@ -20,15 +20,21 @@ function MediaCard({ title, text, author }) {
         alt="green grass"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography>
           { title }
         </Typography>
         <Typography variant="body2" color="text.secondary">
           { text }
         </Typography>
-        Autor:
-        { author?.login }
-        <button type="button" className="buttonUserPage" onClick={() => navigate(`users/${author?.id}`)}>Author page </button>
+        <button
+          type="button"
+          className="buttonUserPage"
+          onClick={() => navigate(`users/${author?.id}`)}
+        >
+          {' '}
+          Author:
+          { author?.login }
+        </button>
       </CardContent>
     </Card>
   );

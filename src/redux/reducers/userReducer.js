@@ -9,6 +9,7 @@ const initialState = {
 export default function news(state = initialState, action = {}) {
   switch (action.type) {
     case actionTypes.USER_NEWS_REQUESTED:
+    case actionTypes.AUTHOR_NEWS_REQUESTED:
       return {
         ...state, isLoading: true, user: {}, error: null,
       };
@@ -19,10 +20,6 @@ export default function news(state = initialState, action = {}) {
     case actionTypes.USER_NEWS_FAILED:
       return {
         ...state, isLoading: false, user: {}, error: action.error,
-      };
-    case actionTypes.AUTHOR_NEWS_REQUESTED:
-      return {
-        ...state, isLoading: true, user: {}, error: null,
       };
     default: return state;
   }

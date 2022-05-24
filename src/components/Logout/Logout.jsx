@@ -21,7 +21,7 @@ function Logout() {
     localStorage.removeItem('token');
   };
 
-  const onClickAvatar = () => navigate('users/my');
+  const onClickAvatar = () => navigate('users/profile');
 
   return (
     <Stack className="logoutContent" direction="row" spacing={2}>
