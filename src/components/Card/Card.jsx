@@ -1,21 +1,23 @@
 import * as React from 'react';
-import { string } from 'prop-types';
+import { string, shape } from 'prop-types';
+import { useNavigate } from 'react-router';
 
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
-function MediaCard({ title, text }) {
+import grass from '../../assets/grass.jpg';
+
+function MediaCard({ title, text, author }) {
+  const navigate = useNavigate();
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        image="/static/images/cards/contemplative-reptile.jpg"
-        alt="green iguana"
+        image={grass}
+        alt="green grass"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -24,11 +26,10 @@ function MediaCard({ title, text }) {
         <Typography variant="body2" color="text.secondary">
           { text }
         </Typography>
+        Autor:
+        { author?.login }
+        <button type="button" className="buttonUserPage" onClick={() => navigate(`users/${author?.id}`)}>Author page </button>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }
@@ -36,11 +37,13 @@ function MediaCard({ title, text }) {
 MediaCard.propTypes = {
   title: string,
   text: string,
+  author: shape({}),
 };
 
 MediaCard.defaultProps = {
   title: '',
   text: '',
+  author: {},
 };
 
 export default MediaCard;

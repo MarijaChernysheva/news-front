@@ -1,0 +1,13 @@
+.userData {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+.userText {
+  font-size: 36px;
+  color: rgba(1, 73, 1, 0.918);
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-right: 25px;
+  margin-left: 25px;
+}
+

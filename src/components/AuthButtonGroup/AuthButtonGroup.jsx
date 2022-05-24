@@ -20,6 +20,7 @@ function AuthButtonGroup() {
       <ButtonGroup variant="contained" aria-label="outlined primary button group">
         <Button onClick={() => handlerClick('login')}>LOG IN</Button>
         <Button onClick={() => handlerClick('signup')}>SIGN UP</Button>
+
       </ButtonGroup>
     </div>
   );

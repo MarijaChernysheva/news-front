@@ -5,8 +5,15 @@
 
 .headerContent {
   text-align: center;
-  background-color: aqua;
-  font-size: 36px;
-  color:black;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+  background: rgb(233,245,215);
+  background: linear-gradient(180deg, rgb(166, 241, 147) 0%,
+  white 98%);
+}
+
+.buttonMainPage {
+  font-size: 50px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  border: 0; 
+  background-color: transparent; 
+  color:rgb(42, 52, 42);
 }
