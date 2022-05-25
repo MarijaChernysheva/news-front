@@ -57,3 +57,18 @@ export const rejectedLogin = (error) => ({
 export const logoutClose = () => ({
   type: actionTypes.LOGOUT,
 });
+
+export const getUser = (payload) => ({
+  type: actionTypes.USER_REQUESTED,
+  payload,
+});
+
+export const gotUser = (payload) => ({
+  type: actionTypes.USER_RECEIVED,
+  payload,
+});
+
+export const rejectedUserNews = (error) => ({
+  type: actionTypes.USER_FAILED,
+  error,
+});

@@ -1,11 +1,54 @@
-import React from 'react';
+import React, { useEffect, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
-function UserPage() {
+import { Card, Spinner, Alert } from '../../components';
+import UserData from '../../components/UserData/UserData';
+
+import { getUser } from '../../redux/actions';
+
+import './UserPage.css';
+
+function UserPosts() {
+  const dispatch = useDispatch();
+  const params = useParams();
+
+  const isMyPage = useMemo(() => params.id === 'profile', [params.id]);
+
+  useEffect(() => {
+    dispatch(getUser(params.id));
+  }, [dispatch, params, isMyPage]);
+
+  const {
+    user,
+    isLoading,
+    error,
+  } = useSelector((state) => state.user);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  if (error) {
+    return <Alert severity="error" text={error} />;
+  }
+
   return (
-    <div>
-      <p>Text</p>
+    <div className="userPage">
+      <UserData email={user?.email} name={user?.login} isMyPage={isMyPage} />
+      {user?.news?.length
+        ? user.news.map(({
+          id, title, text,
+        }) => (
+          <Card
+            key={id}
+            title={title}
+            text={text}
+          />
+        ))
+        : <Alert severity="success" text="NO NEWS" />}
     </div>
   );
 }
 
-export default UserPage;
+export default UserPosts;

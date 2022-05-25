@@ -17,7 +17,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/userPage" element={<UserPage />} />
+        <Route path="/users/:id" element={<UserPage />} />
       </Routes>
       {isModalOpen && <AuthModal />}
     </BrowserRouter>

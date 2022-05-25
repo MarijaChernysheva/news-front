@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Card from '../../components/Card/Card';
-import Spinner from '../../components/Spinner/Spinner';
-import Alert from '../../components/Alert/Alert';
+import { Card, Spinner, Alert } from '../../components';
+
 import { getNews } from '../../redux/actions';
+
+import './MainPage.css';
 
 function Posts() {
   const dispatch = useDispatch();
@@ -28,15 +29,20 @@ function Posts() {
   }
 
   return (
-    <div>
-      {news.length > 0 && news.map((post) => (
-        <Card
-          key={post.id}
-          title={post.title}
-          text={post.text}
-        />
-      ))}
-      {news.length <= 0 && <Alert severity="success" text="poop" />}
+    <div className="mainPage">
+      {news.length
+        ? news.map(({
+          id, title, text, user,
+        }) => (
+          <Card
+            key={id}
+            title={title}
+            text={text}
+            author={user}
+          />
+        ))
+        : <Alert severity="success" text="NO NEWS" />}
+
     </div>
   );
 }
