@@ -2,9 +2,7 @@ import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
-import Card from '../../components/Card/Card';
-import Spinner from '../../components/Spinner/Spinner';
-import Alert from '../../components/Alert/Alert';
+import { Card, Spinner, Alert } from '../../components';
 import UserData from '../../components/UserData/UserData';
 
 import { getUser } from '../../redux/actions';
@@ -37,13 +35,15 @@ function UserPosts() {
 
   return (
     <div className="userPage">
-      <UserData email={user.email} name={user.login} isMyPage={isMyPage} />
+      <UserData email={user?.email} name={user?.login} isMyPage={isMyPage} />
       {user?.news?.length
-        ? user.news.map((post) => (
+        ? user.news.map(({
+          id, title, text,
+        }) => (
           <Card
-            key={post.id}
-            title={post.title}
-            text={post.text}
+            key={id}
+            title={title}
+            text={text}
           />
         ))
         : <Alert severity="success" text="NO NEWS" />}

@@ -31,12 +31,14 @@ function Posts() {
   return (
     <div className="mainPage">
       {news.length
-        ? news.map((post) => (
+        ? news.map(({
+          id, title, text, user,
+        }) => (
           <Card
-            key={post.id}
-            title={post.title}
-            text={post.text}
-            author={post.user}
+            key={id}
+            title={title}
+            text={text}
+            author={user}
           />
         ))
         : <Alert severity="success" text="NO NEWS" />}
