@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useSelector } from 'react-redux';
 import { string, shape } from 'prop-types';
 import { useNavigate } from 'react-router';
 
@@ -11,6 +12,10 @@ import grass from '../../assets/grass.jpg';
 
 function MediaCard({ title, text, author }) {
   const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+
+  const onClickAuthor = () => navigate(`users/${author?.id}`);
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -26,15 +31,17 @@ function MediaCard({ title, text, author }) {
         <Typography variant="body2" color="text.secondary">
           { text }
         </Typography>
-        <button
-          type="button"
-          className="buttonUserPage"
-          onClick={() => navigate(`users/${author?.id}`)}
-        >
-          {' '}
-          Author:
-          { author?.login }
-        </button>
+        {isLoggedIn ? (
+          <button
+            type="button"
+            onClick={onClickAuthor}
+          >
+            Author:
+            { author?.login }
+          </button>
+        ) : (
+          author?.login
+        )}
       </CardContent>
     </Card>
   );

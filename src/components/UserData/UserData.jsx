@@ -11,7 +11,6 @@ function UserData({ email, name, isMyPage }) {
       {isMyPage && <Button variant="contained">Add news</Button>}
       <p className="userText">{ name }</p>
       <p className="userText">
-        {' '}
         { email }
       </p>
 

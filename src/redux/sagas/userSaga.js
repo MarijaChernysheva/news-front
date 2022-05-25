@@ -3,19 +3,22 @@ import {
   put,
 } from 'redux-saga/effects';
 
-import { gotUserNews, getUserNewsRejected } from '../actions';
+import { gotUser, rejectedUserNews } from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
 
-function* getUserNewsSaga({ payload: id }) {
+function* getUserSaga({ payload: id }) {
   try {
-    const { data: payload } = yield api.get(`/users/${id}`);
-    yield put(gotUserNews(payload));
+    const url = id === 'profile'
+      ? '/users'
+      : `/users/${id}`;
+    const { data: payload } = yield api.get(`${url}`);
+    yield put(gotUser(payload));
   } catch (err) {
-    yield put(getUserNewsRejected(err.message));
+    yield put(rejectedUserNews(err.message));
   }
 }
 
 export default function* watcherSaga() {
-  yield takeEvery(actionTypes.USER_NEWS_REQUESTED, getUserNewsSaga);
+  yield takeEvery(actionTypes.USER_REQUESTED, getUserSaga);
 }

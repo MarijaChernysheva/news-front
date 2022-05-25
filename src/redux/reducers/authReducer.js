@@ -4,7 +4,7 @@ const initialState = {
   isModalOpen: false,
   modalType: '',
   error: null,
-  isUserLogin: Boolean(localStorage.getItem('token')),
+  isLoggedIn: Boolean(localStorage.getItem('token')),
   currentUser: {},
 };
 
@@ -26,7 +26,7 @@ export default function auth(state = initialState, action = {}) {
         ...state,
         isModalOpen: false,
         error: null,
-        isUserLogin: true,
+        isLoggedIn: true,
         currentUser: action.payload.currentUser,
       };
     case actionTypes.AUTH_RECEIVED:
@@ -34,7 +34,7 @@ export default function auth(state = initialState, action = {}) {
         ...state,
         isModalOpen: false,
         error: null,
-        isUserLogin: true,
+        isLoggedIn: true,
       };
     case actionTypes.AUTH_FAILED:
     case actionTypes.LOGIN_FAILED:
@@ -45,7 +45,7 @@ export default function auth(state = initialState, action = {}) {
     case actionTypes.LOGOUT:
       return {
         ...state,
-        isUserLogin: false,
+        isLoggedIn: false,
       };
     default: return state;
   }

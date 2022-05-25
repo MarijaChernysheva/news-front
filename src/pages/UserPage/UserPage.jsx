@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 
@@ -7,21 +7,19 @@ import Spinner from '../../components/Spinner/Spinner';
 import Alert from '../../components/Alert/Alert';
 import UserData from '../../components/UserData/UserData';
 
+import { getUser } from '../../redux/actions';
+
 import './UserPage.css';
-import { getUserNews, openAuthorPage } from '../../redux/actions';
 
 function UserPosts() {
   const dispatch = useDispatch();
   const params = useParams();
 
-  const isMyPage = params.id === 'profile';
+  const isMyPage = useMemo(() => params.id === 'profile', [params.id]);
 
   useEffect(() => {
-    const currentAction = isMyPage
-      ? openAuthorPage()
-      : getUserNews(params.id);
-    dispatch(currentAction);
-  }, [dispatch, params]);
+    dispatch(getUser(params.id));
+  }, [dispatch, params, isMyPage]);
 
   const {
     user,
@@ -40,14 +38,15 @@ function UserPosts() {
   return (
     <div className="userPage">
       <UserData email={user.email} name={user.login} isMyPage={isMyPage} />
-      {user?.news?.length > 0 && user.news.map((post) => (
-        <Card
-          key={post.id}
-          title={post.title}
-          text={post.text}
-        />
-      ))}
-      {user?.news?.length === 0 && <Alert severity="success" text="NO NEWS" />}
+      {user?.news?.length
+        ? user.news.map((post) => (
+          <Card
+            key={post.id}
+            title={post.title}
+            text={post.text}
+          />
+        ))
+        : <Alert severity="success" text="NO NEWS" />}
     </div>
   );
 }

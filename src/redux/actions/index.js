@@ -58,22 +58,17 @@ export const logoutClose = () => ({
   type: actionTypes.LOGOUT,
 });
 
-export const getUserNews = (payload) => ({
-  type: actionTypes.USER_NEWS_REQUESTED,
+export const getUser = (payload) => ({
+  type: actionTypes.USER_REQUESTED,
   payload,
 });
 
-export const gotUserNews = (payload) => ({
-  type: actionTypes.USER_NEWS_RECEIVED,
+export const gotUser = (payload) => ({
+  type: actionTypes.USER_RECEIVED,
   payload,
 });
 
-export const getUserNewsRejected = (error) => ({
-  type: actionTypes.USER_NEWS_FAILED,
+export const rejectedUserNews = (error) => ({
+  type: actionTypes.USER_FAILED,
   error,
-});
-
-export const openAuthorPage = (payload) => ({
-  type: actionTypes.AUTHOR_NEWS_REQUESTED,
-  payload,
 });
