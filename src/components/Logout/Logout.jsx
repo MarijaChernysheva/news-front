@@ -19,6 +19,7 @@ function Logout() {
   const onClick = () => {
     dispatch(logoutClose());
     localStorage.removeItem('token');
+    navigate('/');
   };
 
   const onClickAvatar = () => navigate('users/profile');

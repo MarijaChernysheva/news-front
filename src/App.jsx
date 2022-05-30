@@ -6,11 +6,13 @@ import MainPage from './pages/MainPage/MainPage';
 import UserPage from './pages/UserPage/UserPage';
 import Header from './components/Header/Header';
 import AuthModal from './components/AuthModal/AuthModal';
+import EditModal from './components/EditModal/EditModal';
 
 import './App.css';
 
 function App() {
   const isModalOpen = useSelector((state) => state.auth.isModalOpen);
+  const isEditModalOpen = useSelector((state) => state.user.isEditModalOpen);
 
   return (
     <BrowserRouter>
@@ -20,6 +22,7 @@ function App() {
         <Route path="/users/:id" element={<UserPage />} />
       </Routes>
       {isModalOpen && <AuthModal />}
+      {isEditModalOpen && <EditModal />}
     </BrowserRouter>
   );
 }

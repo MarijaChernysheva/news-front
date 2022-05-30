@@ -12,12 +12,16 @@ import './UserPage.css';
 function UserPosts() {
   const dispatch = useDispatch();
   const params = useParams();
+  const { id: userId } = params;
+  const token = localStorage.getItem('token');
 
-  const isMyPage = useMemo(() => params.id === 'profile', [params.id]);
+  const isMyPage = useMemo(() => userId === 'profile', [userId]);
 
   useEffect(() => {
-    dispatch(getUser(params.id));
-  }, [dispatch, params, isMyPage]);
+    if (token) {
+      dispatch(getUser(userId));
+    }
+  }, [dispatch, userId, token]);
 
   const {
     user,
@@ -35,11 +39,15 @@ function UserPosts() {
 
   return (
     <div className="userPage">
-      <UserData email={user?.email} name={user?.login} isMyPage={isMyPage} />
+      <UserData
+        email={user?.email}
+        name={user?.login}
+        avatar={user?.avatar}
+        isMyPage={isMyPage}
+      />
+
       {user?.news?.length
-        ? user.news.map(({
-          id, title, text,
-        }) => (
+        ? user.news.map(({ id, title, text }) => (
           <Card
             key={id}
             title={title}
