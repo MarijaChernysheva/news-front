@@ -18,6 +18,7 @@ function UserData({
   const onClick = () => {
     dispatch(toggleEditModal(true));
   };
+  console.log(avatar);
 
   return (
     <div className="userData">
