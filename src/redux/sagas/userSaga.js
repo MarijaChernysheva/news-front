@@ -3,7 +3,10 @@ import {
   put,
 } from 'redux-saga/effects';
 
-import { gotUser, rejectedUserNews } from '../actions';
+import {
+  gotUser, rejectedUserNews, gotLogin, rejectedLogin,
+  updateUser, rejectedUser,
+} from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
 
@@ -19,6 +22,37 @@ function* getUserSaga({ payload: id }) {
   }
 }
 
+function* loginSaga({ payload }) {
+  try {
+    const { data } = yield api.post('/auth/login', payload);
+    if (data.token) {
+      localStorage.setItem('token', data.token);
+    }
+    yield put(gotLogin(data));
+  } catch ({ response }) {
+    yield put(rejectedLogin(response.data.message));
+  }
+}
+
+function* editUserSaga({ payload, file }) {
+  try {
+    const formData = new FormData();
+
+    formData.append('file', file);
+    formData.append('login', payload);
+    yield api.patch(
+      '/users',
+      formData,
+      { headers: { 'content-type': 'multipart/form-data' } },
+    );
+    yield put(updateUser(payload));
+  } catch ({ err }) {
+    yield put(rejectedUser(err.message));
+  }
+}
+
 export default function* watcherSaga() {
+  yield takeEvery(actionTypes.EDIT_USER_REQUESTED, editUserSaga);
   yield takeEvery(actionTypes.USER_REQUESTED, getUserSaga);
+  yield takeEvery(actionTypes.LOGIN_REQUESTED, loginSaga);
 }

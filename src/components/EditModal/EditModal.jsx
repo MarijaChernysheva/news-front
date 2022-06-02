@@ -5,20 +5,10 @@ import { useFormik } from 'formik';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
+import './EditModal.css';
 import { toggleEditModal, changeUser } from '../../redux/actions';
-
-const style = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
-  boxShadow: 24,
-  p: 4,
-};
 
 function EditModal() {
   const dispatch = useDispatch();
@@ -46,10 +36,10 @@ function EditModal() {
     setLogin(e.target.value);
   };
 
-  const uploadAvatar = (event) => {
-    event.preventDefault();
-    if (event.target.files[0]) {
-      setAvatar(event.target.files[0]);
+  const uploadAvatar = (e) => {
+    e.preventDefault();
+    if (e.target.files[0]) {
+      setAvatar(e.target.files[0]);
     }
   };
 
@@ -58,25 +48,29 @@ function EditModal() {
       open={isEditModalOpen}
       onClose={handleClose}
     >
-      <Box sx={style}>
-        <p className="userText">Profile editing</p>
-        <form onSubmit={formik.handleSubmit}>
-          <TextField
-            value={login}
-            onChange={handleChange}
-          />
-          <input
-            type="file"
-            accept="image/*"
-            onChange={uploadAvatar}
-          />
-          <button
-            type="submit"
-            disabled={!login}
-          >
-            Submit
-          </button>
-        </form>
+      <Box className="boxEditModal">
+        <div className="aaa">
+          <span className="userText">Profile editing</span>
+          <form onSubmit={formik.handleSubmit}>
+            <TextField
+              value={login}
+              onChange={handleChange}
+            />
+            <input
+              variant="contained"
+              type="file"
+              accept="image/*"
+              onChange={uploadAvatar}
+            />
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={!login}
+            >
+              Submit
+            </Button>
+          </form>
+        </div>
       </Box>
     </Modal>
   );

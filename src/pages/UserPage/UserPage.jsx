@@ -46,15 +46,14 @@ function UserPosts() {
         isMyPage={isMyPage}
       />
 
-      {user?.news?.length
-        ? user.news.map(({ id, title, text }) => (
-          <Card
-            key={id}
-            title={title}
-            text={text}
-          />
-        ))
-        : <Alert severity="success" text="NO NEWS" />}
+      {user?.news?.map(({ id, title, text }) => (
+        <Card
+          key={id}
+          title={title}
+          text={text}
+        />
+      ))
+        || <Alert severity="success" text="NO NEWS" />}
     </div>
   );
 }
