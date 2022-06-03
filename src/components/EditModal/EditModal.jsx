@@ -49,28 +49,26 @@ function EditModal() {
       onClose={handleClose}
     >
       <Box className="boxEditModal">
-        <div className="aaa">
-          <span className="userText">Profile editing</span>
-          <form onSubmit={formik.handleSubmit}>
-            <TextField
-              value={login}
-              onChange={handleChange}
-            />
-            <input
-              variant="contained"
-              type="file"
-              accept="image/*"
-              onChange={uploadAvatar}
-            />
-            <Button
-              variant="contained"
-              type="submit"
-              disabled={!login}
-            >
-              Submit
-            </Button>
-          </form>
-        </div>
+        <span className="userText">Profile editing</span>
+        <form onSubmit={formik.handleSubmit}>
+          <TextField
+            value={login}
+            onChange={handleChange}
+          />
+          <input
+            variant="contained"
+            type="file"
+            accept="image/*"
+            onChange={uploadAvatar}
+          />
+          <Button
+            variant="contained"
+            type="submit"
+            disabled={!login}
+          >
+            Submit
+          </Button>
+        </form>
       </Box>
     </Modal>
   );

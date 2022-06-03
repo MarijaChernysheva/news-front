@@ -28,12 +28,11 @@ export default function news(state = initialState, action = {}) {
       };
     case actionTypes.EDIT_USER_RECEIVED:
       return {
-        ...state, isEditModalOpen: false,
+        ...state, isEditModalOpen: false, user: action.payload,
       };
     case actionTypes.LOGIN_RECEIVED:
       return {
-        ...state,
-        user: action.payload.user,
+        ...state, user: action.payload.user,
       };
     default: return state;
   }

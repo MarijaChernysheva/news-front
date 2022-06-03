@@ -17,12 +17,14 @@ function Logout() {
   const navigate = useNavigate();
 
   const onClick = () => {
+    localStorage.clear();
     dispatch(logoutClose());
-    localStorage.removeItem('token');
     navigate('/');
   };
 
-  const onClickAvatar = () => navigate('users/profile');
+  const onClickAvatar = () => {
+    navigate('users/profile');
+  };
 
   return (
     <Stack className="logoutContent" direction="row" spacing={2}>
