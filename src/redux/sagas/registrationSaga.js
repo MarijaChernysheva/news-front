@@ -1,17 +1,21 @@
 import {
   takeEvery,
   put,
+  call,
 } from 'redux-saga/effects';
 
-import { gotAuth, rejectedAuth, sendLogin } from '../actions';
+import { gotAuth, rejectedAuth } from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
 
 function* registrationSaga({ payload }) {
   try {
-    const { data } = yield api.post('/auth/signup', payload);
+    const { data } = yield call(api.post, '/auth/signup', payload);
+    if (data?.token) {
+      localStorage.setItem('token', data.token);
+    }
+
     yield put(gotAuth(data));
-    yield put(sendLogin(payload));
   } catch ({ response }) {
     yield put(rejectedAuth(response.data.message));
   }

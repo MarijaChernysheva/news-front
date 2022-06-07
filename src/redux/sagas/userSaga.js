@@ -17,7 +17,12 @@ function* getUserSaga({ payload: id }) {
     const url = id === 'profile'
       ? '/users'
       : `/users/${id}`;
-    const { data: payload } = yield call(api.get, url);
+    const token = localStorage.getItem('token');
+    const { data: payload } = yield call(
+      api.get,
+      url,
+      { headers: { authorization: token } },
+    );
     yield put(gotUser(payload));
   } catch (err) {
     yield put(rejectedUserNews(err.message));
@@ -27,7 +32,7 @@ function* getUserSaga({ payload: id }) {
 function* loginSaga({ payload }) {
   try {
     const { data } = yield call(api.post, '/auth/login', payload);
-    if (data.token) {
+    if (data?.token) {
       localStorage.setItem('token', data.token);
     }
     yield put(gotLogin(data));

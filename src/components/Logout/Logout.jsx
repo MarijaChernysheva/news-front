@@ -25,7 +25,6 @@ function Logout() {
   const onClickAvatar = () => {
     navigate('users/profile');
   };
-
   return (
     <Stack className="logoutContent" direction="row" spacing={2}>
       <Avatar onClick={onClickAvatar} sx={{ bgcolor: grey[500] }}>
