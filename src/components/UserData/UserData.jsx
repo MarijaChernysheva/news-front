@@ -1,20 +1,31 @@
 import * as React from 'react';
+import { useDispatch } from 'react-redux';
 import { bool, string } from 'prop-types';
 
 import Button from '@mui/material/Button';
 
+import { toggleEditModal } from '../../redux/actions';
+
 import './UserData.css';
 
-function UserData({ email, name, isMyPage }) {
+function UserData({
+  email, name, avatar, isMyPage,
+}) {
+  const photo = avatar?.slice(6);
+  const dispatch = useDispatch();
+  const onClick = () => {
+    dispatch(toggleEditModal(true));
+  };
+
   return (
     <div className="userData">
       {isMyPage && <Button variant="contained">Add news</Button>}
-      <p className="userText">{ name }</p>
-      <p className="userText">
+      <span className="userText">{ name }</span>
+      <img className="imagePrifile" alt="avatar" src={`${process.env.REACT_APP_API_URL}/${photo}`} />
+      <span className="userText">
         { email }
-      </p>
-
-      {isMyPage && <Button variant="contained">Edit profile</Button>}
+      </span>
+      {isMyPage && <Button variant="contained" onClick={onClick}>Edit profile</Button>}
     </div>
   );
 }
@@ -22,12 +33,14 @@ function UserData({ email, name, isMyPage }) {
 UserData.propTypes = {
   email: string,
   name: string,
+  avatar: string,
   isMyPage: bool,
 };
 
 UserData.defaultProps = {
   email: '',
   name: '',
+  avatar: '',
   isMyPage: false,
 };
 

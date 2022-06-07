@@ -72,3 +72,24 @@ export const rejectedUserNews = (error) => ({
   type: actionTypes.USER_FAILED,
   error,
 });
+
+export const toggleEditModal = (payload) => ({
+  type: actionTypes.TOGGLE_EDIT_MODAL,
+  payload,
+});
+
+export const changeUser = (payload, file) => ({
+  type: actionTypes.EDIT_USER_REQUESTED,
+  payload,
+  file,
+});
+
+export const updateUser = (payload) => ({
+  type: actionTypes.EDIT_USER_RECEIVED,
+  payload,
+});
+
+export const rejectedUser = (payload) => ({
+  type: actionTypes.EDIT_USER_FAILED,
+  payload,
+});

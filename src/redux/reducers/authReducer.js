@@ -5,7 +5,6 @@ const initialState = {
   modalType: '',
   error: null,
   isLoggedIn: Boolean(localStorage.getItem('token')),
-  currentUser: {},
 };
 
 export default function auth(state = initialState, action = {}) {
@@ -27,7 +26,6 @@ export default function auth(state = initialState, action = {}) {
         isModalOpen: false,
         error: null,
         isLoggedIn: true,
-        currentUser: action.payload.currentUser,
       };
     case actionTypes.AUTH_RECEIVED:
       return {
@@ -46,6 +44,7 @@ export default function auth(state = initialState, action = {}) {
       return {
         ...state,
         isLoggedIn: false,
+        token: '',
       };
     default: return state;
   }
