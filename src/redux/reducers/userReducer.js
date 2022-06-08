@@ -26,9 +26,13 @@ export default function news(state = initialState, action = {}) {
       return {
         ...state, isEditModalOpen: action.payload,
       };
+    case actionTypes.EDIT_USER_REQUESTED:
+      return {
+        ...state, user: action.payload, token: localStorage.getItem('token'),
+      };
     case actionTypes.EDIT_USER_RECEIVED:
       return {
-        ...state, isEditModalOpen: false, user: action.payload,
+        ...state, isEditModalOpen: false, user: action.payload, error: null,
       };
     case actionTypes.LOGIN_RECEIVED:
       return {

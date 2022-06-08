@@ -78,6 +78,11 @@ export const toggleEditModal = (payload) => ({
   payload,
 });
 
+export const toggleNewsModal = (payload) => ({
+  type: actionTypes.TOGGLE_NEWS_MODAL,
+  payload,
+});
+
 export const changeUser = (payload, file) => ({
   type: actionTypes.EDIT_USER_REQUESTED,
   payload,
@@ -91,5 +96,20 @@ export const updateUser = (payload) => ({
 
 export const rejectedUser = (payload) => ({
   type: actionTypes.EDIT_USER_FAILED,
+  payload,
+});
+
+export const addUserNews = (payload) => ({
+  type: actionTypes.USER_NEWS_REQUESTED,
+  payload,
+});
+
+export const takeUserNews = (payload) => ({
+  type: actionTypes.USER_NEWS_RECEIVED,
+  payload,
+});
+
+export const refuseUserNews = (payload) => ({
+  type: actionTypes.USER_NEWS_FAILED,
   payload,
 });

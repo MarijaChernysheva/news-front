@@ -4,7 +4,7 @@ import { bool, string } from 'prop-types';
 
 import Button from '@mui/material/Button';
 
-import { toggleEditModal } from '../../redux/actions';
+import { toggleEditModal, toggleNewsModal } from '../../redux/actions';
 
 import './UserData.css';
 
@@ -12,14 +12,20 @@ function UserData({
   email, name, avatar, isMyPage,
 }) {
   const photo = avatar?.slice(6);
+
   const dispatch = useDispatch();
+
   const onClick = () => {
     dispatch(toggleEditModal(true));
   };
 
+  const onClickNews = () => {
+    dispatch(toggleNewsModal(true));
+  };
+
   return (
     <div className="userData">
-      {isMyPage && <Button variant="contained">Add news</Button>}
+      {isMyPage && <Button variant="contained" onClick={onClickNews}>Add news</Button>}
       <span className="userText">{ name }</span>
       <img className="imagePrifile" alt="avatar" src={`${process.env.REACT_APP_API_URL}/${photo}`} />
       <span className="userText">

@@ -7,12 +7,14 @@ import UserPage from './pages/UserPage/UserPage';
 import Header from './components/Header/Header';
 import AuthModal from './components/AuthModal/AuthModal';
 import EditModal from './components/EditModal/EditModal';
+import NewsModal from './components/NewsModal/NewsModal';
 
 import './App.css';
 
 function App() {
   const isModalOpen = useSelector((state) => state.auth.isModalOpen);
   const isEditModalOpen = useSelector((state) => state.user.isEditModalOpen);
+  const isNewsModalOpen = useSelector((state) => state.news.isNewsModalOpen);
 
   return (
     <BrowserRouter>
@@ -23,6 +25,7 @@ function App() {
       </Routes>
       {isModalOpen && <AuthModal />}
       {isEditModalOpen && <EditModal />}
+      {isNewsModalOpen && <NewsModal />}
     </BrowserRouter>
   );
 }

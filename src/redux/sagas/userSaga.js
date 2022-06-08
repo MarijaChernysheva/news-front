@@ -43,15 +43,15 @@ function* loginSaga({ payload }) {
 
 function* editUserSaga({ payload, file }) {
   try {
+    const token = localStorage.getItem('token');
     const formData = new FormData();
-
     formData.append('file', file);
     formData.append('login', payload);
     const { data } = yield call(
       api.patch,
       '/users',
       formData,
-      { headers: { 'content-type': 'multipart/form-data' } },
+      { headers: { authorization: token } },
     );
     yield put(updateUser(data));
   } catch ({ err }) {
