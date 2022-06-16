@@ -11,6 +11,7 @@ import { toggleNewsModal } from '../../redux/actions';
 import './NewsModal.css';
 
 function NewsModal() {
+  localStorage.getItem('token');
   const isNewsModalOpen = useSelector((state) => state.news.isNewsModalOpen);
 
   const dispatch = useDispatch();

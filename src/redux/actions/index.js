@@ -104,12 +104,12 @@ export const addUserNews = (payload) => ({
   payload,
 });
 
-export const takeUserNews = (payload) => ({
-  type: actionTypes.USER_NEWS_RECEIVED,
-  payload,
-});
+// export const takeUserNews = (payload) => ({
+//   type: actionTypes.USER_NEWS_RECEIVED,
+//   payload,
+// });
 
-export const refuseUserNews = (payload) => ({
+export const refuseUserNews = (error) => ({
   type: actionTypes.USER_NEWS_FAILED,
-  payload,
+  error,
 });

@@ -13,6 +13,7 @@ export default function news(state = initialState, action = {}) {
     case actionTypes.AUTHOR_NEWS_REQUESTED:
       return {
         ...state, isLoading: true, user: null, error: null,
+
       };
     case actionTypes.USER_RECEIVED:
       return {

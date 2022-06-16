@@ -1,27 +1,28 @@
 import * as React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useDispatch } from 'react-redux';
-import * as Yup from 'yup';
+// import * as Yup from 'yup';
 
 import Button from '@mui/material/Button';
 
 import { addUserNews } from '../../redux/actions';
 
-const SignupSchema = Yup.object().shape({
-  title: Yup.string()
-    .min(2, 'Too Short!')
-    .required('Required'),
-  text: Yup.string()
-    .min(2, 'Too Short!')
-    .required('Required'),
-  tag: Yup.string()
-    .min(2, 'Too Short!'),
-});
+// const SignupSchema = Yup.object().shape({
+//   title: Yup.string()
+//     .min(2, 'Too Short!')
+//     .required('Required'),
+//   text: Yup.string()
+//     .min(2, 'Too Short!')
+//     .required('Required'),
+//   tag: Yup.string()
+//     .min(2, 'Too Short!'),
+// });
 
 function NewsForm() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmitNews = (values) => {
+    localStorage.getItem('token');
     dispatch(addUserNews(values));
   };
 
@@ -32,8 +33,8 @@ function NewsForm() {
         text: '',
         tag: '',
       }}
-      validationSchema={SignupSchema}
-      onSubmit={handleSubmit}
+      // validationSchema={SignupSchema}
+      onSubmit={handleSubmitNews}
     >
       <Form className="newsForm">
         <span className="userText">News editing</span>
@@ -54,17 +55,20 @@ function NewsForm() {
           placeholder="tag"
         />
 
-        <input
-          variant="contained"
-          type="file"
-          accept="image/*"
-        />
-        <Button
-          variant="contained"
-          type="submit"
-        >
-          Submit
-        </Button>
+        <>
+          {/* <input
+            variant="contained"
+            type="file"
+            accept="image/*"
+          /> */}
+          <Button
+            variant="contained"
+            type="submit"
+          >
+            Submit
+          </Button>
+
+        </>
       </Form>
     </Formik>
   );
