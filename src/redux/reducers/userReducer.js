@@ -12,8 +12,10 @@ export default function news(state = initialState, action = {}) {
     case actionTypes.USER_REQUESTED:
     case actionTypes.AUTHOR_NEWS_REQUESTED:
       return {
-        ...state, isLoading: true, user: null, error: null,
-
+        ...state,
+        isLoading: true,
+        user: null,
+        error: null,
       };
     case actionTypes.USER_RECEIVED:
       return {
@@ -37,7 +39,6 @@ export default function news(state = initialState, action = {}) {
       return {
         ...state,
         user: action.payload,
-        token: localStorage.getItem('token'),
       };
     case actionTypes.EDIT_USER_RECEIVED:
       return {

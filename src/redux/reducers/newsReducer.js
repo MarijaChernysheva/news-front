@@ -2,7 +2,6 @@ import * as actionTypes from '../constants';
 
 const initialState = {
   news: [],
-  user: null,
   isLoading: false,
   error: null,
   isNewsModalOpen: false,
@@ -13,7 +12,6 @@ export default function news(state = initialState, action = {}) {
     case actionTypes.NEWS_REQUESTED:
       return {
         ...state,
-        user: action.payload,
         isLoading: true,
         news: [],
         error: null,
@@ -45,7 +43,6 @@ export default function news(state = initialState, action = {}) {
         isLoading: true,
         isNewsModalOpen: false,
         error: null,
-        token: localStorage.getItem('token'),
       };
 
     default: return state;

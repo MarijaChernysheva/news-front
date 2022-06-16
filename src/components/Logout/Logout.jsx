@@ -17,7 +17,7 @@ function Logout() {
   const navigate = useNavigate();
 
   const onClick = () => {
-    localStorage.clear();
+    localStorage.removeItem('token');
     dispatch(logoutClose());
     navigate('/');
   };
