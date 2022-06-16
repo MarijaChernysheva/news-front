@@ -1,22 +1,10 @@
 import * as React from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useDispatch } from 'react-redux';
-// import * as Yup from 'yup';
 
 import Button from '@mui/material/Button';
 
 import { addUserNews } from '../../redux/actions';
-
-// const SignupSchema = Yup.object().shape({
-//   title: Yup.string()
-//     .min(2, 'Too Short!')
-//     .required('Required'),
-//   text: Yup.string()
-//     .min(2, 'Too Short!')
-//     .required('Required'),
-//   tag: Yup.string()
-//     .min(2, 'Too Short!'),
-// });
 
 function NewsForm() {
   const dispatch = useDispatch();
@@ -33,7 +21,6 @@ function NewsForm() {
         text: '',
         tag: '',
       }}
-      // validationSchema={SignupSchema}
       onSubmit={handleSubmitNews}
     >
       <Form className="newsForm">
@@ -54,21 +41,13 @@ function NewsForm() {
           name="tag"
           placeholder="tag"
         />
+        <Button
+          variant="contained"
+          type="submit"
+        >
+          Submit
+        </Button>
 
-        <>
-          {/* <input
-            variant="contained"
-            type="file"
-            accept="image/*"
-          /> */}
-          <Button
-            variant="contained"
-            type="submit"
-          >
-            Submit
-          </Button>
-
-        </>
       </Form>
     </Formik>
   );

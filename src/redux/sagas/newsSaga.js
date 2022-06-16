@@ -1,19 +1,19 @@
 import {
   takeEvery,
   put,
-  // takeLatest,
   call,
 } from 'redux-saga/effects';
 
 import {
   gotNews,
   getRejected,
-  refuseUserNews,
+  rejectedUserNews,
   getUser,
-  // takeUserNews,
 } from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
+
+const OK = 200;
 
 function* getNewsSaga() {
   try {
@@ -27,23 +27,17 @@ function* getNewsSaga() {
 function* addNewsUserSaga({ payload }) {
   try {
     const token = localStorage.getItem('token');
-    // const formData = new FormData();
-    // formData.append('file', file);
-    // formData.append('title', title);
-    // formData.append('text', text);
-    // formData.append('tag', tag);
     const data = yield call(
       api.post,
       '/news',
       payload,
-      // formData,
       { headers: { authorization: token } },
     );
-    if (data.status === 200) {
+    if (data.status === OK) {
       yield put(getUser('profile'));
     }
   } catch ({ err }) {
-    yield put(refuseUserNews(err));
+    yield put(rejectedUserNews(err));
   }
 }
 

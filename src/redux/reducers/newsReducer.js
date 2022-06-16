@@ -47,18 +47,7 @@ export default function news(state = initialState, action = {}) {
         error: null,
         token: localStorage.getItem('token'),
       };
-    case actionTypes.USER_NEWS_RECEIVED:
-      return {
-        ...state, user: action.payload, token: localStorage.getItem('token'),
-      };
-    case actionTypes.USER_NEWS_FAILED:
-      return {
-        ...state,
-        //     isLoading: false,
-        //     isNewsModalOpen: false,
-        //     news: [],
-        error: action.error,
-      };
+
     default: return state;
   }
 }
