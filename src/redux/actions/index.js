@@ -103,13 +103,3 @@ export const addUserNews = (payload) => ({
   type: actionTypes.USER_NEWS_REQUESTED,
   payload,
 });
-
-export const takeUserNews = (payload) => ({
-  type: actionTypes.USER_NEWS_RECEIVED,
-  payload,
-});
-
-export const refuseUserNews = (payload) => ({
-  type: actionTypes.USER_NEWS_FAILED,
-  payload,
-});

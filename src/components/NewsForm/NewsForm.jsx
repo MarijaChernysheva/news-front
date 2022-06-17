@@ -21,7 +21,7 @@ const SignupSchema = Yup.object().shape({
 function NewsForm() {
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmitNews = (values) => {
     dispatch(addUserNews(values));
   };
 
@@ -33,7 +33,7 @@ function NewsForm() {
         tag: '',
       }}
       validationSchema={SignupSchema}
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitNews}
     >
       <Form className="newsForm">
         <span className="userText">News editing</span>
@@ -53,18 +53,13 @@ function NewsForm() {
           name="tag"
           placeholder="tag"
         />
-
-        <input
-          variant="contained"
-          type="file"
-          accept="image/*"
-        />
         <Button
           variant="contained"
           type="submit"
         >
           Submit
         </Button>
+
       </Form>
     </Formik>
   );
