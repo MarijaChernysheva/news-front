@@ -61,11 +61,13 @@ export const logoutClose = () => ({
 export const getUser = (payload) => ({
   type: actionTypes.USER_REQUESTED,
   payload,
+  // file,
 });
 
 export const gotUser = (payload) => ({
   type: actionTypes.USER_RECEIVED,
   payload,
+  // file,
 });
 
 export const rejectedUserNews = (error) => ({
@@ -99,7 +101,8 @@ export const rejectedUser = (payload) => ({
   payload,
 });
 
-export const addUserNews = (payload) => ({
+export const addUserNews = (payload, file) => ({
   type: actionTypes.USER_NEWS_REQUESTED,
   payload,
+  file,
 });

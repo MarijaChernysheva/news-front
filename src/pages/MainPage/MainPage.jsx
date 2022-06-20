@@ -32,9 +32,10 @@ function Posts() {
     <div className="mainPage">
       {news.length
         ? news.map(({
-          id, title, text, user,
+          file, id, title, text, user,
         }) => (
           <Card
+            file={file}
             key={id}
             title={title}
             text={text}

@@ -46,8 +46,11 @@ function UserPosts() {
         isMyPage={isMyPage}
       />
 
-      {user?.news?.map(({ id, title, text }) => (
+      {user?.news?.map(({
+        image, id, title, text,
+      }) => (
         <Card
+          file={image}
           key={id}
           title={title}
           text={text}

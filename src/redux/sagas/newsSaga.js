@@ -24,13 +24,18 @@ function* getNewsSaga() {
   }
 }
 
-function* addNewsUserSaga({ payload }) {
+function* addNewsUserSaga({ payload, file }) {
   try {
     const token = localStorage.getItem('token');
+    const formData = new FormData();
+    formData.append('image', file);
+    formData.append('title', payload.title);
+    formData.append('text', payload.text);
+    formData.append('tag', payload.tag);
     const data = yield call(
       api.post,
       '/news',
-      payload,
+      formData,
       { headers: { authorization: token } },
     );
     if (data.status === OK) {
