@@ -3,5 +3,9 @@
   justify-content: right;
   align-items: center;
   padding-right: 15px;
+  padding-top: 15px;
+}
 
+.avatar {
+  cursor: pointer;
 }

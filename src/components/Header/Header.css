@@ -10,10 +10,8 @@
   white 98%);
 }
 
-.buttonMainPage {
+.headerText {
   font-size: 50px;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-  border: 0; 
-  background-color: transparent; 
   color:rgb(42, 52, 42);
-}
+} 

@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-// import grass from '../../assets/grass.jpg';
+import './Card.css';
 
 function MediaCard({
   file, title, text, author,
@@ -21,12 +21,10 @@ function MediaCard({
   const image = file?.slice(6);
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card className="cardComponent" sx={{ maxWidth: 345 }}>
       <CardMedia
         component="img"
         height="140"
-        // image={grass}
-        alt="green grass"
         src={`${process.env.REACT_APP_API_URL}/${image}`}
       />
       <CardContent>
