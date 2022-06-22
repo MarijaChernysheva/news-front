@@ -29,21 +29,26 @@ function Posts() {
   }
 
   return (
-    <div className="mainPage">
-      {news.length
-        ? news.map(({
-          id, title, text, user,
-        }) => (
-          <Card
-            key={id}
-            title={title}
-            text={text}
-            author={user}
-          />
-        ))
-        : <Alert severity="success" text="NO NEWS" />}
+    <>
+      <div className="mainPageText">Main page</div>
+      <div className="mainPage">
+        {news.length
+          ? news.map(({
+            image, id, title, text, user,
+          }) => (
+            <Card
+              file={image}
+              key={id}
+              title={title}
+              text={text}
+              author={user}
+            />
+          ))
+          : <Alert severity="success" text="NO NEWS" />}
 
-    </div>
+      </div>
+
+    </>
   );
 }
 

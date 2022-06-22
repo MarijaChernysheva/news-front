@@ -3,12 +3,22 @@
   justify-content:center;
   align-items: center;
 }
+
+.allNews{
+  display: block;
+  margin-left: 15px;
+  margin-bottom: 10px;
+
+}
+
 .userText {
   font-size: 36px;
   color: rgba(1, 73, 1, 0.918);
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   margin: 0 25px;
 }
+
 .imagePrifile {
   height: 140px;
+  margin-bottom: 15px;
 }

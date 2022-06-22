@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import { Formik, Field, Form } from 'formik';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
@@ -21,13 +21,23 @@ const SignupSchema = Yup.object().shape({
 function NewsForm() {
   const dispatch = useDispatch();
 
+  const [file, setImage] = useState();
+
   const handleSubmitNews = (values) => {
-    dispatch(addUserNews(values));
+    dispatch(addUserNews(values, file));
+  };
+
+  const uploadImage = (e) => {
+    e.preventDefault();
+    if (e.target.files[0]) {
+      setImage(e.target.files[0]);
+    }
   };
 
   return (
     <Formik
       initialValues={{
+        file: '',
         title: '',
         text: '',
         tag: '',
@@ -47,11 +57,16 @@ function NewsForm() {
           name="text"
           placeholder="text"
         />
-
         <Field
           id="tag"
           name="tag"
           placeholder="tag"
+        />
+        <input
+          variant="contained"
+          type="file"
+          accept="image/*"
+          onChange={uploadImage}
         />
         <Button
           variant="contained"

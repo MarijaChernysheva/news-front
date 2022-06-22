@@ -38,23 +38,30 @@ function UserPosts() {
   }
 
   return (
-    <div className="userPage">
-      <UserData
-        email={user?.email}
-        name={user?.login}
-        avatar={user?.avatar}
-        isMyPage={isMyPage}
-      />
-
-      {user?.news?.map(({ id, title, text }) => (
-        <Card
-          key={id}
-          title={title}
-          text={text}
+    <>
+      <div className="userPageText">User page</div>
+      <div className="userPage">
+        <UserData
+          email={user?.email}
+          name={user?.login}
+          avatar={user?.avatar}
+          isMyPage={isMyPage}
         />
-      ))
+
+        {user?.news?.map(({
+          image, id, title, text,
+        }) => (
+          <Card
+            file={image}
+            key={id}
+            title={title}
+            text={text}
+          />
+        ))
         || <Alert severity="success" text="NO NEWS" />}
-    </div>
+      </div>
+
+    </>
   );
 }
 

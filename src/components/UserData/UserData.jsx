@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { bool, string } from 'prop-types';
 
 import Button from '@mui/material/Button';
@@ -23,16 +24,29 @@ function UserData({
     dispatch(toggleNewsModal(true));
   };
 
+  const navigate = useNavigate();
+
+  const onClickAllnews = () => navigate('/');
+
   return (
-    <div className="userData">
-      {isMyPage && <Button variant="contained" onClick={onClickNews}>Add news</Button>}
-      <span className="userText">{ name }</span>
-      <img className="imagePrifile" alt="avatar" src={`${process.env.REACT_APP_API_URL}/${photo}`} />
-      <span className="userText">
-        { email }
-      </span>
-      {isMyPage && <Button variant="contained" onClick={onClick}>Edit profile</Button>}
-    </div>
+    <>
+      <div className="allNews">
+        <Button className="buttonMainPage" variant="contained" color="success" onClick={onClickAllnews}>
+          Main Page
+        </Button>
+
+      </div>
+      <div className="userData">
+        {isMyPage && <Button variant="contained" onClick={onClickNews}>Add news</Button>}
+        <span className="userText">{name}</span>
+        <img className="imagePrifile" alt="avatar" src={`${process.env.REACT_APP_API_URL}/${photo}`} />
+        <span className="userText">
+          {email}
+        </span>
+        {isMyPage && <Button variant="contained" onClick={onClick}>Edit profile</Button>}
+      </div>
+
+    </>
   );
 }
 
