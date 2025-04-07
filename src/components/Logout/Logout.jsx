@@ -26,7 +26,7 @@ function Logout() {
   };
   return (
     <Stack className="logoutContent" direction="row" spacing={2}>
-      <Avatar className="avatar" sx={{ bgcolor: grey[500] }} onClick={onClickAvatar} src="/broken-image.jpg" />
+      <Avatar data-testid="avatar" className="avatar" sx={{ bgcolor: grey[500] }} onClick={onClickAvatar} src="/broken-image.jpg" />
       <Button variant="contained" onClick={onClick}>LOG OUT</Button>
     </Stack>
   );

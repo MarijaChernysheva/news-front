@@ -49,6 +49,7 @@ function AuthForm() {
         }}
         validationSchema={SignupSchema}
         onSubmit={handleSubmit}
+        data-testid="authForm"
       >
         <Form>
 

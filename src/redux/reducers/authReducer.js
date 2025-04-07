@@ -44,7 +44,6 @@ export default function auth(state = initialState, action = {}) {
       return {
         ...state,
         isLoggedIn: false,
-        token: '',
       };
     default: return state;
   }

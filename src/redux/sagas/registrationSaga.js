@@ -8,7 +8,7 @@ import { gotAuth, rejectedAuth } from '../actions';
 import * as actionTypes from '../constants';
 import api from '../../api/api';
 
-function* registrationSaga({ payload }) {
+export function* registrationSaga({ payload }) {
   try {
     const { data } = yield call(api.post, '/auth/signup', payload);
     if (data?.token) {
