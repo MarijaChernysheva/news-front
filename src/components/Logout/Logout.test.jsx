@@ -15,18 +15,20 @@ jest.mock('react-router', () => ({
 }));
 
 const navigateMock = jest.fn();
+
+const renderWithProviders = () => render(
+  <MemoryRouter>
+    <Provider store={store}>
+      <Logout />
+    </Provider>
+  </MemoryRouter>,
+);
 describe('Logout', () => {
   beforeEach(() => {
     useNavigate.mockReturnValue(navigateMock);
   });
   test('Click button calls localStorage.removeItem', () => {
-    render(
-      <MemoryRouter>
-        <Provider store={store}>
-          <Logout />
-        </Provider>
-      </MemoryRouter>,
-    );
+    renderWithProviders();
     const removeItemMock = jest.spyOn(Storage.prototype, 'removeItem');
     const btn = screen.getByRole('button');
     expect(btn).toBeInTheDocument();
@@ -36,13 +38,7 @@ describe('Logout', () => {
     removeItemMock.mockRestore();
   });
   test('Click avatar calls navigate', () => {
-    render(
-      <MemoryRouter>
-        <Provider store={store}>
-          <Logout />
-        </Provider>
-      </MemoryRouter>,
-    );
+    renderWithProviders();
     const avatar = screen.getByTestId('avatar');
     expect(avatar).toBeInTheDocument();
     fireEvent.click(avatar);
