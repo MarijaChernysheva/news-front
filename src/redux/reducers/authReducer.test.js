@@ -1,86 +1,76 @@
 import authReducer from './authReducer';
 
+const INITIAL_VALUE = {
+  isModalOpen: false,
+  modalType: '',
+  error: null,
+  isLoggedIn: false,
+};
+
 describe('authReducer', () => {
   const initialState = {
-    isModalOpen: false,
-    modalType: '',
-    error: null,
+    ...INITIAL_VALUE,
     isLoggedIn: Boolean(localStorage.getItem('token')),
   };
   test('should return the initial state', () => {
     expect(authReducer(initialState, {})).toEqual({
-      isModalOpen: false,
-      modalType: '',
-      error: null,
-      isLoggedIn: false,
+      ...INITIAL_VALUE,
     });
   });
 
-  test('should handle TOGGLE_MODAL', () => {
+  test('should open a modal window', () => {
     expect(
       authReducer(initialState, {
         type: 'TOGGLE_MODAL',
         payload: true,
       }),
     ).toEqual({
+      ...INITIAL_VALUE,
       isModalOpen: true,
-      modalType: '',
-      error: null,
-      isLoggedIn: false,
     });
   });
-  test('should handle CHANGE_MODAL_TYPE', () => {
+  test('should open the login form', () => {
     expect(
       authReducer(initialState, {
         type: 'CHANGE_MODAL_TYPE',
         payload: 'login',
       }),
     ).toEqual({
-      isModalOpen: false,
+      ...INITIAL_VALUE,
       modalType: 'login',
-      error: null,
-      isLoggedIn: false,
     });
   });
-  test('should handle LOGIN_RECEIVED', () => {
+  test('should mark user as logged in', () => {
     expect(authReducer(initialState, {
       type: 'LOGIN_RECEIVED',
     })).toEqual({
-      isModalOpen: false,
-      error: null,
+      ...INITIAL_VALUE,
       isLoggedIn: true,
-      modalType: '',
     });
   });
-  test('should handle AUTH_RECEIVED', () => {
+  test('should mark user as registered', () => {
     expect(authReducer(initialState, {
       type: 'AUTH_RECEIVED',
     })).toEqual({
-      isModalOpen: false,
-      error: null,
+      ...INITIAL_VALUE,
       isLoggedIn: true,
-      modalType: '',
+
     });
   });
-  test('should handle AUTH_FAILED', () => {
+  test('should mark authentication as failed', () => {
     expect(authReducer(initialState, {
       type: 'AUTH_FAILED',
       error: 'error',
     })).toEqual({
-      isModalOpen: false,
+      ...INITIAL_VALUE,
       error: 'error',
-      isLoggedIn: false,
-      modalType: '',
     });
   });
-  test('should handle LOGOUT', () => {
+  test('should mark user as logged out', () => {
     expect(authReducer(initialState, {
       type: 'LOGOUT',
     })).toEqual({
-      isModalOpen: false,
-      error: null,
-      isLoggedIn: false,
-      modalType: '',
+      ...INITIAL_VALUE,
     });
   });
 });

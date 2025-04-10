@@ -1,25 +1,30 @@
 import { call, put } from 'redux-saga/effects';
-import { registrationSaga } from './registrationSaga';
+
 import api from '../../api/api';
 import { gotAuth, rejectedAuth } from '../actions';
+import { registrationSaga } from './registrationSaga';
+
+const TEST_EMAIL = 'test@mail.ru';
+const TEST_PASSWORD = 'test_password';
+const TEST_LOGIN = 'test_login';
 
 describe('registrationSaga', () => {
   const payload = {
-    email: '444@mail.ru',
-    password: '444',
-    login: '444',
+    email: TEST_EMAIL,
+    password: TEST_PASSWORD,
+    login: TEST_LOGIN,
   };
   const action = { payload };
-  test('should handle successful registration by storing the token and dispatching gotAuth', () => {
+  test('should store token on successful registration', () => {
     const generator = registrationSaga(action);
     expect(generator.next().value).toEqual(call(api.post, '/auth/signup', payload));
 
     const mockResponse = {
       data: {
         currentUser: {
-          email: '444@mail.ru',
-          password: '444',
-          login: '444',
+          email: TEST_EMAIL,
+          password: TEST_PASSWORD,
+          login: TEST_LOGIN,
         },
         token: 'token',
       },
@@ -30,7 +35,7 @@ describe('registrationSaga', () => {
     expect(generator.next().done).toBe(true);
   });
 
-  test('should handle registration failure dispatching rejectedAuth', () => {
+  test('should handle registration failure', () => {
     const generator = registrationSaga(action);
     expect(generator.next().value).toEqual(call(api.post, '/auth/signup', payload));
 
